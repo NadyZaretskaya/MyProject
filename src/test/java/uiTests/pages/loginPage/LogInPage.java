@@ -1,16 +1,14 @@
-package uiTests.pages;
+package uiTests.pages.loginPage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import uiTests.pages.Page;
+import uiTests.pages.confirmationLoginPage.ConfirmationLogInPage;
+import static uiTests.pages.loginPage.LoginPageLocators.*;
 
-public class LogInPage extends Page{
-    private static final String URL = "https://idemo.bspb.ru/";
-    private static final String URL_AFTER_INVALID_INPUT = "https://idemo.bspb.ru/auth/login";
-    private static final String LOGIN_INPUT = "//*[@id=\"login-form\"]/div[1]/input";
-    private static final String PASSWORD_INPUT = "//*[@id=\"login-form\"]/div[2]/input";
-    private static final String LOGIN_BUTTON = "#login-button";
-    private static final String ALERT_MESSAGE = "//*[@id=\"alerts-container\"]/div[2]";
+public class LogInPage extends Page {
+
 
     public LogInPage(WebDriver driver) {
         super(driver);

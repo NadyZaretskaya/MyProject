@@ -1,12 +1,11 @@
-package uiTests.pages;
+package uiTests.pages.homePage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import uiTests.pages.Page;
+import static uiTests.pages.homePage.HomePageLocators.*;
 
-public class HomePage extends Page{
-    private static final String USER_NAME = "//*[@id=\"representee-list\"]/div/button/span[1]";
-    private static final String HOME_PAGE_URL = "https://idemo.bspb.ru/welcome";
-
+public class HomePage extends Page {
 
     public HomePage(WebDriver driver) {
         super(driver);

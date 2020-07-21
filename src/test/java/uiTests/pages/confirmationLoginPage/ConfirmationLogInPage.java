@@ -1,14 +1,13 @@
-package uiTests.pages;
+package uiTests.pages.confirmationLoginPage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import uiTests.pages.homePage.HomePage;
+import uiTests.pages.Page;
+import static uiTests.pages.confirmationLoginPage.ConfirmationLoginPageLocators.*;
 
-public class ConfirmationLogInPage extends Page{
-    private static final String CONFIRMATION_CODE_INPUT = "#otp-code";
-    private static final String CONFIRMATION_LOGIN_BUTTON = "#login-otp-button";
-    private static final String URL_AFTER_INVALID_INPUT = "https://idemo.bspb.ru/auth/otp/retry?authOptionId=SMS:10005";
-    private static final String ALERT_MESSAGE = "//*[@id=\"global-alerts-container\"]/div";
+public class ConfirmationLogInPage extends Page {
 
     public ConfirmationLogInPage(WebDriver driver) {
         super(driver);

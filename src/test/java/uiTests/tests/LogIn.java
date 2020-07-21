@@ -3,9 +3,9 @@ package uiTests.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import uiTests.businessObjects.User;
-import uiTests.pages.ConfirmationLogInPage;
-import uiTests.pages.HomePage;
-import uiTests.pages.LogInPage;
+import uiTests.pages.confirmationLoginPage.ConfirmationLogInPage;
+import uiTests.pages.homePage.HomePage;
+import uiTests.pages.loginPage.LogInPage;
 
 public class LogIn extends BaseTest{
     private static final User VALID_USER = new User("Королёва Ольга", "demo",
@@ -65,10 +65,5 @@ public class LogIn extends BaseTest{
         Assert.assertEquals(driver.getCurrentUrl(), confirmationLogInPage.getUrlAfterInvalidInput());
         Assert.assertTrue(confirmationLogInPage.isAlertMessageDisplayed());
     }
-
-    
-
-
-
 
 }
