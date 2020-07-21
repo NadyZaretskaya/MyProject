@@ -7,7 +7,7 @@ import org.testng.annotations.BeforeTest;
 
 public class BaseTest {
     protected static WebDriver driver;
-    private static final String CHROME_PATH = "src/main/resources/chromedriver.exe";
+    private static final String CHROME_PATH = "src/test/resources/chromedriver.exe";
 
     @BeforeTest
     public static void setUp() {

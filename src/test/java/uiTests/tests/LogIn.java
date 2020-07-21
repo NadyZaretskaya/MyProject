@@ -15,11 +15,13 @@ public class LogIn extends BaseTest{
     private ConfirmationLogInPage confirmationLogInPage;
     private HomePage homePage;
 
-    @Test
+
+
     /* 1. В поля "Логин" и "Пароль" ввести валидные данные и нажать кнопку "Войти".
-       2. В поле "Код подтверждения" ввести валидный код и нажать кнопку "Войти".
-       ОР: Пользователь перенаправлен на главную страницу и авторизован под своим именем.
-     */
+           2. В поле "Код подтверждения" ввести валидный код и нажать кнопку "Войти".
+           ОР: Пользователь перенаправлен на главную страницу и авторизован под своим именем.
+         */
+    @Test
     public void logInWithValidValues() {
         logInPage = new LogInPage(driver);
         logInPage.open();
@@ -31,11 +33,12 @@ public class LogIn extends BaseTest{
         Assert.assertEquals(VALID_USER.getUserName(), homePage.getUserName());
         Assert.assertEquals(driver.getCurrentUrl(), homePage.getHomePageUrl());
     }
-    @Test
+
     /* 1. Поля "Логин" и "Пароль" оставить пустыми.
        2. Нажать кнопку "Войти"
        ОР: Пользователь остался на странице авторизации и появилось сообщение о некорректно введенных данных.
      */
+    @Test
     public void logInWithEmptyFields() {
         logInPage = new LogInPage(driver);
         logInPage.open();
@@ -46,11 +49,11 @@ public class LogIn extends BaseTest{
         Assert.assertTrue(logInPage.isAlertMessageDisplayed());
     }
 
-    @Test
-     /* 1. В поля "Логин" и "Пароль" ввести валидные данные и нажать кнопку "Войти".
+    /* 1. В поля "Логин" и "Пароль" ввести валидные данные и нажать кнопку "Войти".
         2. Поле "Код подтверждения" оставить пустым и нажать кнопку "Войти".
         ОР: Пользователь остался на странице ввода кода авторизации и появилось сообщение о некорректно введенных данных.
      */
+    @Test
     public void logInWithEmptyConfirmationCode() {
         logInPage = new LogInPage(driver);
         logInPage.open();
