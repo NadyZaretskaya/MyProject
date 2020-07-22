@@ -7,11 +7,11 @@ import uiTests.pages.confirmationLoginPage.ConfirmationLogInPage;
 import uiTests.pages.homePage.HomePage;
 import uiTests.pages.loginPage.LogInPage;
 
-public class LogIn extends BaseTest{
+public class LoginTest extends BaseTest{
     private static final User VALID_USER = new User("Королёва Ольга", "demo",
             "demo", "0000");
 
-    private LogInPage logInPage;
+    private LogInPage logInPage = new LogInPage();
     private ConfirmationLogInPage confirmationLogInPage;
     private HomePage homePage;
 
@@ -23,7 +23,7 @@ public class LogIn extends BaseTest{
          */
     @Test
     public void logInWithValidValues() {
-        logInPage = new LogInPage(driver);
+//        logInPage = new LogInPage();
         logInPage.open();
         logInPage.enterValueInLogInField(VALID_USER.getLogin());
         logInPage.enterValueInPasswordField(VALID_USER.getPassaword());
@@ -40,7 +40,7 @@ public class LogIn extends BaseTest{
      */
     @Test
     public void logInWithEmptyFields() {
-        logInPage = new LogInPage(driver);
+//        logInPage = new LogInPage();
         logInPage.open();
         logInPage.enterValueInLogInField("");
         logInPage.enterValueInPasswordField("");
@@ -55,7 +55,7 @@ public class LogIn extends BaseTest{
      */
     @Test
     public void logInWithEmptyConfirmationCode() {
-        logInPage = new LogInPage(driver);
+//        logInPage = new LogInPage();
         logInPage.open();
         logInPage.enterValueInLogInField(VALID_USER.getLogin());
         logInPage.enterValueInPasswordField(VALID_USER.getPassaword());
