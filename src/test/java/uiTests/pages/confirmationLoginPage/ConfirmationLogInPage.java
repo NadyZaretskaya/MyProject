@@ -1,6 +1,6 @@
 package uiTests.pages.confirmationLoginPage;
 
-import org.openqa.selenium.By;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import uiTests.pages.homePage.HomePage;
@@ -11,22 +11,20 @@ public class ConfirmationLogInPage extends Page {
     protected static final String URL_AFTER_INVALID_INPUT = "https://idemo.bspb.ru/auth/otp/" +
                                                             "retry?authOptionId=SMS:10005";
 
-//    public ConfirmationLogInPage(WebDriver driver) {
-//        super(driver);
-//    }
 
+    @Step("Entering confirmation code in confirmation field")
     public void enterValuesInConfirmationForm(String value) {
-        waitForElementVisibility(CONFIRMATION_CODE_INPUT);
-        WebElement textfield = lookForElement(CONFIRMATION_CODE_INPUT);
+        waitForElementPresence(CONFIRMATION_CODE_INPUT);
+        WebElement textfield = findElement(CONFIRMATION_CODE_INPUT);
         textfield.clear();
         textfield.click();
         textfield.sendKeys(value);
-//        driver.findElement(By.cssSelector(CONFIRMATION_CODE_INPUT)).sendKeys(value);
         }
 
+    @Step("Click ")
     public HomePage clickConfirmationLogInButton() {
-        waitForElementToBeClickable(CONFIRMATION_LOGIN_BUTTON);
-        lookForElement(CONFIRMATION_LOGIN_BUTTON).click();
+        waitForElementClickable(CONFIRMATION_LOGIN_BUTTON);
+        findElement(CONFIRMATION_LOGIN_BUTTON).click();
         return new HomePage();
     }
 
@@ -35,8 +33,8 @@ public class ConfirmationLogInPage extends Page {
     }
 
     public Boolean isAlertMessageDisplayed() {
-        waitForElementVisibility(ALERT_MESSAGE);
-        return lookForElement(ALERT_MESSAGE).isDisplayed();
+        waitForElementPresence(ALERT_MESSAGE);
+        return findElement(ALERT_MESSAGE).isDisplayed();
     }
 
 }

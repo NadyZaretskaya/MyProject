@@ -1,6 +1,5 @@
 package uiTests.pages.loginPage;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import uiTests.pages.Page;
@@ -19,16 +18,16 @@ public class LogInPage extends Page {
     }
 
     public void enterValueInLogInField(String value) {
-        waitForElementVisibility(LOGIN_INPUT);
-        WebElement textfield = lookForElement(LOGIN_INPUT);
+        waitForElementClickable(LOGIN_INPUT);
+        WebElement textfield = findElement(LOGIN_INPUT);
         textfield.clear();
         textfield.click();
         textfield.sendKeys(value);
 
     }
     public void enterValueInPasswordField(String value) {
-        waitForElementVisibility(PASSWORD_INPUT);
-        WebElement textfield = lookForElement(PASSWORD_INPUT);
+        waitForElementClickable(PASSWORD_INPUT);
+        WebElement textfield = findElement(PASSWORD_INPUT);
         textfield.clear();
         textfield.click();
         textfield.sendKeys(value);
@@ -36,8 +35,8 @@ public class LogInPage extends Page {
     }
 
     public ConfirmationLogInPage clickLogInButton() {
-        waitForElementToBeClickable(LOGIN_BUTTON);
-        lookForElement(LOGIN_BUTTON).click();
+        waitForElementClickable(LOGIN_BUTTON);
+        findElement(LOGIN_BUTTON).click();
         return new ConfirmationLogInPage();
     }
 
@@ -46,7 +45,7 @@ public class LogInPage extends Page {
     }
 
     public Boolean isAlertMessageDisplayed() {
-        waitForElementVisibility(ALERT_MESSAGE);
-        return lookForElement(ALERT_MESSAGE).isDisplayed();
+        waitForElementPresence(ALERT_MESSAGE);
+        return findElement(ALERT_MESSAGE).isDisplayed();
     }
 }

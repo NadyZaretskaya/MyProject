@@ -1,6 +1,5 @@
 package uiTests.pages.homePage;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import uiTests.pages.Page;
 import static uiTests.pages.homePage.HomePageLocators.*;
@@ -17,8 +16,8 @@ public class HomePage extends Page {
     }
 
     public String getUserName() {
-        waitForElementVisibility(USER_NAME);
-        return lookForElement(USER_NAME).getText();
+        waitForElementPresence(USER_NAME);
+        return findElement(USER_NAME).getText();
     }
 
 

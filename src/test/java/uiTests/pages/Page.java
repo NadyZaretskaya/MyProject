@@ -1,34 +1,78 @@
 package uiTests.pages;
 
+import io.qameta.allure.Step;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import uiTests.driver.DriverSingleton;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import uiTests.driver.DriverSingleton;
+import utils.Waiters;
+
 
 public class Page {
-    protected WebDriver driver = DriverSingleton.getDriver();
+    private final Logger log = LogManager.getRootLogger();
+    protected WebDriver webDriver = DriverSingleton.getDriver();
 
-//    public Page(WebDriver driver) {
-//        this.driver = driver;
+//    public Page(WebDriver webDriver) {
+//        this.webDriver = webDriver;
 //    }
 
-    protected void waitForElementVisibility(By locator) {
-        new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+    protected WebElement findElement(By by) {
+        return webDriver.findElement(by);
     }
 
-    protected void waitForElementToBeClickable(By locator) {
-        new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(locator));
+    protected void waitForElementPresence(By by) {
+        Waiters.waitForElementPresence(webDriver, by);
+     }
+
+    protected void waitForElementClickable(By by) {
+        Waiters.waitForElementClickable(webDriver, by);
     }
 
-    protected WebElement lookForElement(By by) {
-        return driver.findElement(by);
+    private void clickButton(By by) {
+        waitForElementPresence(by);
+        findElement(by).click();
     }
 
+    protected void enterText(By by, String text) {
+        findElement(by).sendKeys(text);
+    }
+
+    protected String getText(By by) {
+        waitForElementPresence(by);
+        return findElement(by).getText();
+    }
+
+    protected boolean elementIsVisible(By by) {
+        try {
+            return findElement(by).isDisplayed();
+        } catch (NoSuchElementException e) {
+            log.error(e.getMessage());
+            return false;
+        }
+    }
+
+    public String getCurrentUrl() {
+        return webDriver.getCurrentUrl();
+    }
+
+    @Step("Open {pageURL}")
     public void open(String pageURL) {
-        driver.get(pageURL);
+        webDriver.get(pageURL);
     }
+
+
+//        protected void waitForElementVisibility(By locator) {
+//        new WebDriverWait(webDriver, 20).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+//    }
+//
+//    protected void waitForElementToBeClickable(By locator) {
+//        new WebDriverWait(webDriver, 20).until(ExpectedConditions.elementToBeClickable(locator));
+//    }
 
 
 }
