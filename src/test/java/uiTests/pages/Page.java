@@ -17,10 +17,6 @@ public class Page {
     private final Logger log = LogManager.getRootLogger();
     protected WebDriver webDriver = DriverSingleton.getDriver();
 
-//    public Page(WebDriver webDriver) {
-//        this.webDriver = webDriver;
-//    }
-
     protected WebElement findElement(By by) {
         return webDriver.findElement(by);
     }
@@ -33,29 +29,6 @@ public class Page {
         Waiters.waitForElementClickable(webDriver, by);
     }
 
-    private void clickButton(By by) {
-        waitForElementPresence(by);
-        findElement(by).click();
-    }
-
-    protected void enterText(By by, String text) {
-        findElement(by).sendKeys(text);
-    }
-
-    protected String getText(By by) {
-        waitForElementPresence(by);
-        return findElement(by).getText();
-    }
-
-    protected boolean elementIsVisible(By by) {
-        try {
-            return findElement(by).isDisplayed();
-        } catch (NoSuchElementException e) {
-            log.error(e.getMessage());
-            return false;
-        }
-    }
-
     public String getCurrentUrl() {
         return webDriver.getCurrentUrl();
     }
@@ -65,7 +38,28 @@ public class Page {
         webDriver.get(pageURL);
     }
 
-
+//    private void clickButton(By by) {
+//        waitForElementPresence(by);
+//        findElement(by).click();
+//    }
+//
+//    protected void enterText(By by, String text) {
+//        findElement(by).sendKeys(text);
+//    }
+//
+//    protected String getText(By by) {
+//        waitForElementPresence(by);
+//        return findElement(by).getText();
+//    }
+//
+//    protected boolean elementIsVisible(By by) {
+//        try {
+//            return findElement(by).isDisplayed();
+//        } catch (NoSuchElementException e) {
+//            log.error(e.getMessage());
+//            return false;
+//        }
+//    }
 //        protected void waitForElementVisibility(By locator) {
 //        new WebDriverWait(webDriver, 20).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
 //    }

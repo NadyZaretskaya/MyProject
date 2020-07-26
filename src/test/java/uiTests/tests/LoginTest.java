@@ -32,8 +32,6 @@ public class LoginTest extends BaseTest{
         homePage = null;
     }
 
-
-
     /* 1. В поля "Логин" и "Пароль" ввести валидные данные и нажать кнопку "Войти".
            2. В поле "Код подтверждения" ввести валидный код и нажать кнопку "Войти".
            ОР: Пользователь перенаправлен на главную страницу и авторизован под своим именем.
@@ -51,7 +49,7 @@ public class LoginTest extends BaseTest{
         confirmationLogInPage.enterValuesInConfirmationForm(VALID_USER.getConfirmationCode());
         homePage = confirmationLogInPage.clickConfirmationLogInButton();
         Assert.assertEquals(VALID_USER.getUserName(), homePage.getUserName());
-        Assert.assertEquals(homePage.getCurrentUrl(), homePage.getHomePageUrl());
+        Assert.assertEquals(homePage.getHomePageUrl(), homePage.getCurrentUrl());
     }
 
     /* 1. Поля "Логин" и "Пароль" оставить пустыми.

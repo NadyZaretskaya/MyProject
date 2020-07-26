@@ -27,17 +27,18 @@ public class DriverSingleton {
                 System.setProperty("webdriver.chrome.driver", CHROME_PATH);
                  driver = new EventFiringWebDriver(new ChromeDriver());
                  driver.register(new WebDriverListener());
+                 setUpDriver();
              } catch (Exception E) {
                 log.info("Driver wasn't set");
             }
         }
          return driver;
     }
-    private static void setUpDriver() {
+
+    public static void setUpDriver() {
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     public static void closeDriver() {
