@@ -9,7 +9,7 @@ import java.time.Duration;
 
 public class Waiters {
 
-    public static void waitForElementPresence(WebDriver webDriver, By by) {
+    public static void waitForElementVisible(WebDriver webDriver, By by) {
         WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(20), Duration.ofMillis(500));
         wait
                 .withMessage("Can't find element" + by)

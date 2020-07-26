@@ -3,13 +3,11 @@ package uiTests.pages;
 import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.NoSuchElementException;
 import uiTests.driver.DriverSingleton;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.Waiters;
 
 
@@ -21,12 +19,17 @@ public class Page {
         return webDriver.findElement(by);
     }
 
-    protected void waitForElementPresence(By by) {
-        Waiters.waitForElementPresence(webDriver, by);
+    protected void waitForElementVisible(By by) {
+        Waiters.waitForElementVisible(webDriver, by);
      }
 
     protected void waitForElementClickable(By by) {
         Waiters.waitForElementClickable(webDriver, by);
+    }
+
+    protected void clearField(By by) {
+        Waiters.waitForElementClickable(webDriver, by);
+        findElement(by).clear();
     }
 
     public String getCurrentUrl() {
@@ -38,22 +41,23 @@ public class Page {
         webDriver.get(pageURL);
     }
 
-//    private void clickButton(By by) {
-//        waitForElementPresence(by);
-//        findElement(by).click();
-//    }
+    protected void clickButton(By by) {
+        waitForElementVisible(by);
+        findElement(by).click();
+    }
 //
-//    protected void enterText(By by, String text) {
-//        findElement(by).sendKeys(text);
-//    }
-//
+    protected void enterText(By by, String text) {
+        findElement(by).sendKeys(text);
+    }
+
 //    protected String getText(By by) {
-//        waitForElementPresence(by);
+//        waitForElementVisible(by);
 //        return findElement(by).getText();
 //    }
 //
-//    protected boolean elementIsVisible(By by) {
+//    protected boolean elementIsDisplayed(By by) {
 //        try {
+//            Waiters.waitForElementVisible(webDriver, by);
 //            return findElement(by).isDisplayed();
 //        } catch (NoSuchElementException e) {
 //            log.error(e.getMessage());

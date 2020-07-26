@@ -74,7 +74,7 @@ public class WebDriverListener implements WebDriverEventListener {
     @Override
     public void beforeFindBy(By by, WebElement webElement, WebDriver webDriver) {
          log.info("Trying to find element" + webElement + "by" + by);
-         Waiters.waitForElementPresence(webDriver, by);
+         Waiters.waitForElementVisible(webDriver, by);
     }
 
     @Override

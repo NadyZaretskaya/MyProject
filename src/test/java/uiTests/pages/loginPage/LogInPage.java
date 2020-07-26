@@ -1,7 +1,6 @@
 package uiTests.pages.loginPage;
 
 import io.qameta.allure.Step;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import uiTests.pages.Page;
 import uiTests.pages.confirmationLoginPage.ConfirmationLogInPage;
@@ -16,27 +15,19 @@ public class LogInPage extends Page {
 
     @Step("Entering {value} in Login field")
     public void enterValueInLogInField(String value) {
-        waitForElementClickable(LOGIN_INPUT);
-        WebElement textfield = findElement(LOGIN_INPUT);
-        textfield.clear();
-        textfield.click();
-        textfield.sendKeys(value);
-
+        clearField(LOGIN_INPUT);
+        enterText(LOGIN_INPUT, value);
     }
 
     @Step("Entering {value} in Password field")
     public void enterValueInPasswordField(String value) {
-        waitForElementClickable(PASSWORD_INPUT);
-        WebElement textfield = findElement(PASSWORD_INPUT);
-        textfield.clear();
-        textfield.click();
-        textfield.sendKeys(value);
-
+        clearField(PASSWORD_INPUT);
+        enterText(PASSWORD_INPUT, value);
     }
+
     @Step("Click \"Войти\" button on Login page")
     public ConfirmationLogInPage clickLogInButton() {
-        waitForElementClickable(LOGIN_BUTTON);
-        findElement(LOGIN_BUTTON).click();
+        clickButton(LOGIN_BUTTON);
         return new ConfirmationLogInPage();
     }
 
@@ -47,7 +38,7 @@ public class LogInPage extends Page {
 
     @Step("Check if alert message is displayed")
     public Boolean isAlertMessageDisplayed() {
-        waitForElementPresence(ALERT_MESSAGE);
+        waitForElementVisible(ALERT_MESSAGE);
         return findElement(ALERT_MESSAGE).isDisplayed();
     }
 }
