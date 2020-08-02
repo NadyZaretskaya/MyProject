@@ -28,24 +28,26 @@ public class DriverSingleton {
                  driver = new EventFiringWebDriver(new ChromeDriver());
                  driver.register(new WebDriverListener());
                  setUpDriver();
-             } catch (Exception E) {
+            } catch (Exception E) {
                 log.info("Driver wasn't set");
-            }
+             }
         }
+        log.info("Set driver");
          return driver;
     }
 
     public static void setUpDriver() {
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     public static void closeDriver() {
         if (driver != null) {
             driver.quit();
+            log.info("Close driver");
             driver = null;
         }
+
     }
 
 }

@@ -1,7 +1,6 @@
 package uiTests.pages.loginPage;
 
 import io.qameta.allure.Step;
-import org.openqa.selenium.WebElement;
 import uiTests.pages.Page;
 import uiTests.pages.confirmationLoginPage.ConfirmationLogInPage;
 import static uiTests.pages.loginPage.LoginPageLocators.*;

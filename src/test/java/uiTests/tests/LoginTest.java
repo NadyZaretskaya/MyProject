@@ -48,7 +48,7 @@ public class LoginTest extends BaseTest{
         confirmationLogInPage = logInPage.clickLogInButton();
         confirmationLogInPage.enterValuesInConfirmationForm(VALID_USER.getConfirmationCode());
         homePage = confirmationLogInPage.clickConfirmationLogInButton();
-        Assert.assertEquals(VALID_USER.getUserName(), homePage.getUserName());
+        Assert.assertEquals(homePage.getUserName(), VALID_USER.getUserName());
         Assert.assertEquals(homePage.getHomePageUrl(), homePage.getCurrentUrl());
     }
 
